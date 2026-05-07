@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "Stock Watchlist API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "stock-watchlist-collection"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] }
+      }
+    },
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test User\",\"email\":\"test@example.com\",\"password\":\"password123\"}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/signup", "host": ["{{baseUrl}}"], "path": ["api","auth","signup"] }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"test@example.com\",\"password\":\"password123\"}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api","auth","login"] }
+      }
+    },
+    {
+      "name": "Get Me",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/auth/me", "host": ["{{baseUrl}}"], "path": ["api","auth","me"] }
+      }
+    },
+    {
+      "name": "Search Stocks",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/stocks/search?query=AAPL",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","stocks","search"],
+          "query": [{ "key": "query", "value": "AAPL" }]
+        }
+      }
+    },
+    {
+      "name": "Get Candles",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/stocks/candles?symbol=AAPL&resolution=1&from=1622505600&to=1622592000",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","stocks","candles"],
+          "query": [
+            { "key": "symbol", "value": "AAPL" },
+            { "key": "resolution", "value": "1" },
+            { "key": "from", "value": "1622505600" },
+            { "key": "to", "value": "1622592000" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Watchlist Item",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"symbol\":\"AAPL\"}" },
+        "url": { "raw": "{{baseUrl}}/api/watchlist", "host": ["{{baseUrl}}"], "path": ["api","watchlist"] }
+      }
+    },
+    {
+      "name": "Get Watchlist",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/watchlist", "host": ["{{baseUrl}}"], "path": ["api","watchlist"] }
+      }
+    },
+    {
+      "name": "Remove Watchlist Item",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/watchlist/AAPL", "host": ["{{baseUrl}}"], "path": ["api","watchlist","AAPL"] }
+      }
+    },
+    {
+      "name": "Add Holding",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"symbol\":\"AAPL\",\"shares\":10,\"price\":150,\"date\":\"2023-01-01\"}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/portfolio", "host": ["{{baseUrl}}"], "path": ["api","portfolio"] }
+      }
+    },
+    {
+      "name": "Get Portfolio",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/portfolio", "host": ["{{baseUrl}}"], "path": ["api","portfolio"] }
+      }
+    }
+  ]
+}
