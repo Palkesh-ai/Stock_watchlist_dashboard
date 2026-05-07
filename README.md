@@ -1,4 +1,4 @@
-# 📈 Stock Watchlist Dashboard — Backend
+# 📈 Stock Watchlist Dashboard
 
 <div align="center">
 
