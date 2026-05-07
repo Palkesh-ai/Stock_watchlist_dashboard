@@ -1,65 +1,94 @@
-# 📈 Stock Watchlist Dashboard
+# Stock Watchlist Dashboard
 
-<div align="center">
+Stock Watchlist Dashboard is a full-stack TypeScript app for tracking stocks, managing a personal watchlist, and recording holdings in a portfolio. The repository contains a Next.js frontend and an Express/MongoDB backend that work together through a JSON REST API.
 
-![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=for-the-badge&logo=node.js)
-![Express](https://img.shields.io/badge/Express.js-Backend-black?style=for-the-badge&logo=express)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=for-the-badge&logo=mongodb)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange?style=for-the-badge)
-![Finnhub](https://img.shields.io/badge/Market%20Data-Finnhub-blue?style=for-the-badge)
+## Overview
 
-### REST API for Watchlist, Portfolio & Real-Time Stock Market Data
+The frontend provides an authenticated dashboard where users can search stocks, manage a watchlist, and maintain portfolio holdings. The backend handles authentication, stock market lookups, watchlist persistence, and portfolio CRUD operations.
 
-</div>
+## Features
 
----
+- JWT-based authentication with signup, login, and current-user support
+- Stock search, symbol lookup, and candlestick data retrieval
+- Watchlist management
+- Portfolio holdings management
+- MongoDB persistence through Mongoose
+- Request validation, security middleware, and centralized error handling
+- Responsive dashboard UI built with Next.js, Tailwind CSS, and Framer Motion
 
-# ✨ Features
+## Tech Stack
 
-- 🔐 JWT Authentication
-- 📊 Real-time stock data using Finnhub API
-- ⭐ Watchlist management
-- 💼 Portfolio tracking
-- 📈 Candlestick market data
-- ⚡ Rate limiting & secure APIs
-- 🌐 RESTful API architecture
-- 🧩 Modular scalable backend structure
+- Frontend: Next.js 15, React 19, TypeScript, Tailwind CSS, Zustand, Framer Motion, Recharts, Sonner
+- Backend: Node.js, Express, TypeScript, MongoDB, Mongoose, JWT, Joi, Axios, Helmet, CORS, Morgan, rate limiting
 
----
+## Repository Structure
 
-# 🛠 Tech Stack
+```text
+Stock_watchlist_dashboard/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middlewares/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── validators/
+│   │   └── server.ts
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── stores/
+│   │   └── types/
+│   └── package.json
+└── package.json
+```
 
-| Technology | Usage |
-|---|---|
-| Node.js | Runtime |
-| Express.js | Backend framework |
-| MongoDB | Database |
-| Mongoose | ODM |
-| JWT | Authentication |
-| Finnhub API | Market Data |
-| TypeScript | Type Safety |
+## Prerequisites
 
----
-
-# 📦 Prerequisites
-
-Before running the project, ensure you have:
-
-- Node.js `18+`
+- Node.js 18 or newer
 - npm or pnpm
-- MongoDB URI (Atlas/local)
+- MongoDB connection string
 - Finnhub API key
 
----
+## Setup
 
-# 🚀 Backend Setup
-2️⃣ Install Dependencies
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd Stock_watchlist_dashboard
+```
+
+### 2. Install dependencies
+
+Install the backend and frontend dependencies separately:
+
+```bash
+cd backend
 npm install
-3️⃣ Create .env
+```
 
-Create a .env file inside the backend directory.
+```bash
+cd ../frontend
+pnpm install
+```
 
-Example
+From the repository root, you can also use:
+
+```bash
+npm run install:all
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the `backend/` directory.
+
+```env
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
 
@@ -71,165 +100,197 @@ FINNHUB_API_KEY=your_finnhub_api_key
 FINNHUB_BASE_URL=https://finnhub.io/api/v1
 
 CORS_ORIGIN=http://localhost:3000
-4️⃣ Run Development Server
+```
+
+Required variables:
+
+- `MONGO_URI`
+- `JWT_SECRET`
+
+Optional variables and defaults:
+
+- `PORT` defaults to `5000`
+- `NODE_ENV` defaults to `development`
+- `JWT_EXPIRES_IN` defaults to `7d`
+- `FINNHUB_BASE_URL` defaults to `https://finnhub.io/api/v1`
+- `CORS_ORIGIN` defaults to `http://localhost:3000`
+
+## Running the App
+
+### Backend
+
+```bash
+cd backend
 npm run dev
-5️⃣ Production Build
+```
+
+Production build:
+
+```bash
 npm run build
 npm start
-🎨 Frontend Setup
+```
+
+### Frontend
+
+```bash
 cd frontend
+pnpm run dev
+```
 
-pnpm install
-pnpm dev
+### Run both from the root
 
-Or using npm:
-
-npm install
+```bash
 npm run dev
-🔑 Environment Variables
+```
 
-See:
+This uses `concurrently` to start the backend and frontend together.
 
-backend/src/config/env.ts
-Required Variables
-Variable	Description
-MONGO_URI	MongoDB connection string
-JWT_SECRET	Secret used for JWT signing
-Optional Variables
-Variable	Default
-PORT	5000
-NODE_ENV	development
-JWT_EXPIRES_IN	7d
-FINNHUB_API_KEY	—
-FINNHUB_BASE_URL	https://finnhub.io/api/v1
-CORS_ORIGIN	http://localhost:3000
-🌐 API Information
-Base URL
-http://localhost:5000
-API Prefix
-/api
-❤️ Health Check
-Endpoint
-GET /health
+## Scripts
 
-No authentication required.
+### Root
 
-🔐 Authentication
+- `npm run dev` starts backend and frontend together
+- `npm run dev:all` starts both apps with `concurrently`
+- `npm run dev:backend` starts the backend only
+- `npm run dev:frontend` starts the frontend only
+- `npm run install:all` installs dependencies for both apps
 
-Protected routes require JWT token.
+### Backend
 
-Header Format
+- `npm run dev` starts the TypeScript server in watch mode
+- `npm run build` compiles the backend to `dist/`
+- `npm start` runs the compiled server
+
+### Frontend
+
+- `pnpm run dev` starts the Next.js dev server
+- `pnpm run build` builds the frontend for production
+- `pnpm run start` serves the production build
+- `pnpm run lint` runs Next.js linting
+- `pnpm run typecheck` runs TypeScript without emitting output
+
+## API
+
+Base URL: `http://localhost:5000`
+
+API prefix: `/api`
+
+Health check:
+
+- `GET /health`
+
+Authentication header format:
+
+```http
 Authorization: Bearer <token>
+```
 
-Middleware:
+### Auth Routes
 
-backend/src/middlewares/auth.ts
-📚 API Endpoints
-👤 Auth Routes
-Signup
-POST /api/auth/signup
-Body
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
+
+Example signup body:
+
+```json
 {
   "name": "John Doe",
   "email": "john@example.com",
   "password": "password123"
 }
-Login
-POST /api/auth/login
-Body
+```
+
+Example login body:
+
+```json
 {
   "email": "john@example.com",
   "password": "password123"
 }
-Current User
-GET /api/auth/me
+```
 
-✅ Requires Authentication
-
-📈 Stock Routes
+### Stock Routes
 
 All stock routes require authentication.
 
-Search Symbol
-GET /api/stocks/search?query=AAPL
-Stock Lookup
-GET /api/stocks/query?symbol=AAPL
-Candlestick Data
-GET /api/stocks/candles?symbol=AAPL&resolution=1&from=1710000000&to=1711000000
-⭐ Watchlist Routes
-Add to Watchlist
-POST /api/watchlist
-Body
+- `GET /api/stocks/search?query=AAPL`
+- `GET /api/stocks/query?symbol=AAPL`
+- `GET /api/stocks/candles?symbol=AAPL&resolution=1&from=1710000000&to=1711000000`
+
+### Watchlist Routes
+
+All watchlist routes require authentication.
+
+- `POST /api/watchlist`
+- `GET /api/watchlist`
+- `DELETE /api/watchlist/:symbol`
+
+Example watchlist body:
+
+```json
 {
   "symbol": "AAPL"
 }
-Get Watchlist
-GET /api/watchlist
-Remove Watchlist Item
-DELETE /api/watchlist/:symbol
+```
 
-Example:
+### Portfolio Routes
 
-DELETE /api/watchlist/AAPL
-💼 Portfolio Routes
-Add Holding
-POST /api/portfolio
-Body
+All portfolio routes require authentication.
+
+- `POST /api/portfolio`
+- `GET /api/portfolio`
+- `DELETE /api/portfolio/:id`
+
+Example holding body:
+
+```json
 {
   "symbol": "AAPL",
   "shares": 10,
   "price": 180,
   "date": "2025-01-01"
 }
-Get Portfolio
-GET /api/portfolio
-Remove Holding
-DELETE /api/portfolio/:id
-📦 Response Format
+```
 
-All APIs follow this structure:
+## Frontend Pages
 
+- `/login` for authentication
+- `/signup` for account creation
+- `/dashboard` for the authenticated user experience
+- `/` redirects to `/login`
+
+## Response Shape
+
+Most API responses follow a consistent JSON envelope:
+
+```json
 {
   "success": true,
   "data": {}
 }
-🗂 Project Structure
-backend/
-├── src/
-│   ├── app.ts
-│   ├── server.ts
-│   ├── config/
-│   │   └── env.ts
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
+```
 
-frontend/
-├── src/
-│   ├── app/
-│   ├── components/
-│   └── services/
-│       └── api/
-🧪 Testing
+## Notes
 
-You can test the API using:
+- The backend validates required environment variables at startup.
+- The API applies rate limiting under `/api`.
+- MongoDB must be reachable before the backend server starts.
+- The frontend expects the backend to be available on the configured API origin.
 
-Postman
-Thunder Client
-curl
+## Testing
 
-Before testing:
+You can test endpoints with Postman, Thunder Client, or `curl`.
 
-Ensure MongoDB is running
-Ensure .env is configured correctly
-📝 Notes
-Rate limiting is applied on /api
-Health route available at /health
-API routes available under /api
-👨‍💻 Author
+Suggested checks:
 
-Built with ❤️ using Node.js, Express, MongoDB & Finnhub API.
-```bash
-git clone <your-repo-url>
-cd backend
+- Confirm MongoDB is running
+- Confirm the backend `.env` file is configured
+- Start the backend and verify `GET /health`
+- Sign up or log in, then reuse the returned JWT for protected routes
+
+## License
+
+No license file is currently included in this repository.
 
