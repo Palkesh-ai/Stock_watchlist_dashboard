@@ -1,0 +1,18 @@
+1:"$Sreact.fragment"
+2:I[51611,[],""]
+3:I[487,[],""]
+4:I[1074,["74","static/chunks/74-79ffaf442bf30abf.js","345","static/chunks/app/not-found-9735e6480e36c66b.js"],""]
+5:I[68287,["585","static/chunks/585-d2a2dbf2faaf0807.js","177","static/chunks/app/layout-2eb4ba2836e238d7.js"],"AppToaster"]
+7:I[65778,[],"OutletBoundary"]
+9:I[30375,[],"AsyncMetadataOutlet"]
+b:I[65778,[],"ViewportBoundary"]
+d:I[65778,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+10:I[27745,[],""]
+:HL["/_next/static/css/fa55629c5ef9c0c6.css","style"]
+0:{"P":null,"b":"JRW68UIPE1m9tbBceZ-8w","p":"","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/fa55629c5ef9c0c6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"min-h-screen bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_38%),linear-gradient(180deg,#020617_0%,#0f172a_100%)] px-6 py-16 text-slate-100","children":["$","div",null,{"className":"mx-auto flex min-h-[calc(100vh-8rem)] max-w-3xl flex-col items-center justify-center text-center","children":[["$","div",null,{"className":"mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-slate-300","children":"404"}],["$","h1",null,{"className":"max-w-2xl text-4xl font-semibold tracking-tight text-white sm:text-6xl","children":"This page wandered off the market."}],["$","p",null,{"className":"mt-5 max-w-xl text-sm leading-7 text-slate-300 sm:text-base","children":"The route you requested does not exist. Return to the dashboard or sign in to continue managing your watchlist and portfolio."}],["$","div",null,{"className":"mt-8 flex flex-col gap-3 sm:flex-row","children":[["$","$L4",null,{"href":"/dashboard","className":"inline-flex h-11 items-center justify-center rounded-md bg-cyan-400 px-5 text-sm font-medium text-slate-950 transition hover:bg-cyan-300","children":"Go to dashboard"}],["$","$L4",null,{"href":"/login","className":"inline-flex h-11 items-center justify-center rounded-md border border-white/10 bg-white/5 px-5 text-sm font-medium text-white transition hover:bg-white/10","children":"Go to login"}]]}]]}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}]]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",null,["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],null],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+6:E{"digest":"NEXT_REDIRECT;replace;/login;307;"}
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+a:{"metadata":[["$","title","0",{"children":"Stock Watchlist Dashboard"}],["$","meta","1",{"name":"description","content":"Modern finance SaaS dashboard"}]],"error":null,"digest":"$undefined"}
+f:"$a:metadata"
