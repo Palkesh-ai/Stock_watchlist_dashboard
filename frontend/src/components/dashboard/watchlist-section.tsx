@@ -25,7 +25,7 @@ type Props = {
 export function WatchlistSection({ items, loading, deletingSymbol, onRefresh, onRemove }: Props) {
   const [viewingSymbol, setViewingSymbol] = useState<string | null>(null);
   const [quoteDetails, setQuoteDetails] = useState<StockQuote | null>(null);
-  const [candleData, setCandleData] = useState<any[]>([]);
+  const [candleData, setCandleData] = useState<{ date: string; price: number }[]>([]);
   const [loadingDetails, setLoadingDetails] = useState(false);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export function WatchlistSection({ items, loading, deletingSymbol, onRefresh, on
         
         let chartData: { date: string; price: number }[] = [];
         if (candles && candles.length > 0) {
-          chartData = candles.map((c: any) => ({
+          chartData = candles.map((c: { time: number; close: number }) => ({
             date: new Date(c.time * 1000).toLocaleDateString(),
             price: c.close
           }));
@@ -119,7 +119,7 @@ export function WatchlistSection({ items, loading, deletingSymbol, onRefresh, on
             }}
           >
             <AnimatePresence>
-            {items.map((item, i) => (
+            {items.map((item) => (
               <motion.div
                 key={item._id}
                 variants={{
@@ -237,7 +237,7 @@ export function WatchlistSection({ items, loading, deletingSymbol, onRefresh, on
                           <Tooltip 
                             contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
                             itemStyle={{ color: '#fff', fontWeight: 'bold' }}
-                            formatter={(value: any) => [formatCurrency(Number(value) || 0), "Price"]}
+                            formatter={(value) => [formatCurrency(Number(value) || 0), "Price"]}
                             labelStyle={{ color: '#94a3b8', marginBottom: '4px', fontSize: '12px' }}
                           />
                           <Line type="monotone" dataKey="price" stroke="#3b82f6" strokeWidth={3} dot={false} activeDot={{ r: 6, fill: "#3b82f6", stroke: "#fff", strokeWidth: 2 }} />

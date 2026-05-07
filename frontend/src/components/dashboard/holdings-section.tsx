@@ -53,7 +53,7 @@ export function HoldingsSection({ holdings, loading, isAdding, onRefresh, onAdd,
             form.setValue("companyName", data.companyName, { shouldValidate: true });
           }
         }
-      } catch (error) {
+      } catch {
         // Ignore errors if symbol is invalid/not found yet
       } finally {
         setIsFetchingPrice(false);
@@ -62,9 +62,6 @@ export function HoldingsSection({ holdings, loading, isAdding, onRefresh, onAdd,
 
     void fetchQuote();
   }, [debouncedSymbol, form]);
-
-  const watchQuantity = form.watch("quantity");
-  const watchAveragePrice = form.watch("averagePrice");
 
   const submit = form.handleSubmit(async (values) => {
     await onAdd(values.symbol, values.companyName, values.quantity, values.averagePrice);

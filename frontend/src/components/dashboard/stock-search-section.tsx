@@ -220,7 +220,7 @@ export function StockSearchSection({ onAddWatchlist, isAddingWatchlist }: Props)
           </motion.div>
         ) : (
           <div className="py-12 text-center">
-            <p className="text-sm text-muted-foreground">No matches found for "{symbol}"</p>
+            <p className="text-sm text-muted-foreground">No matches found for &quot;{symbol}&quot;</p>
           </div>
         )}
         </div>
